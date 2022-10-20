@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>tweet to pic</title>
+                <style>
+*{
+margin:0;
+padding:0;
+}
+#card-wrapper{
+	width:50vw;
+	height:50vw;
+	background-color:#1DA1F2;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	resize: both;
+	overflow: hidden;
+}
+#card{
+	width:100%;
+	background-color:white;
+	padding:32px;
+	margin:32px;
+	border:0;
+	border-radius:16px;
+}
+#first-row{
+	display:flex;
+	justify-content:space-between;
+}
+#first-row-left{
+	display:flex;
+}
+#twitter-logo{
+	height:50px;
+	width:auto;
+}
+#profile{
+	height:60px;
+	width:60px;
+	border-radius:50%;
+	margin:0 16px 0 0;
+}
+#tweet-text{
+	padding:16px 16px 0 0;
+}
+#third-row{
+	padding:16px 0 0 0;
+}
+#username{
+	color:#8E8E8E;
+}
+#time{
+	color:#8E8E8E;
+}
+#date{
+	color:#8E8E8E;
+}
+#version{
+	color:#2AA3EF;
+}
+#change-wrapper{
+	width:30vw;
+	display:flex;
+	flex-direction:column;
+}
+		</style>
+        </head>
+        <body>
+		<form method="POST" action="/">
+			<input type="text" id="tweetLink" name="tweetLink" />
+			<button type="submit">Send</button>
+		</form>
+
+		<div id="change-wrapper">
+			<input type="text" value="<%= name %>" id="name-change" onchange='changeText("name",this.value)' onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();"/>
+			<input type="text" value="<%= username %>" id="username-change" onchange='changeText("username","@" + this.value)' onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();"/>
+			<input type="text" value="<%= tweetText %>" id="tweet-text-change" onchange='changeText("tweet-text",this.value)' onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();"/>
+			<input type="text" value="<%= time %>" id="time-change" onchange='changeText("time",this.value)' onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();"/>
+			<input type="text" value="<%= dateYear %>" id="date-text-change" onchange='changeText("date",this.value)' onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();"/>
+			<input type="text" value="<%= version %>" id="version-change" onchange='changeText("version",this.value)' onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();"/>
+			<input type="text" value="#1DA1F2" id="color-change" onchange='changeColor(this.value)' onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();"/>
+			Profile image <input type="file" name="myImage" accept="image/*" onchange="readURL(this);"/>
+			
+			<label for="cars">Choose a dimension:</label>
+			<select name="cars" id="cars" onChange="resize(this.value)">
+				<option value="square">square</option>
+				<option value="landscape">landscape</option>
+				<option value="potrait">potrait</option>
+			</select>
+		</div>
+		<hr/>
+                <div id="card-wrapper">
+                        <div id="card">
+                                <div id="first-row">
+                                        <div id="first-row-left">
+                                                <img id="profile" src="<%= profileUrl %>"/>
+                                                <span id="names-block">
+                                                        <p id="name"><%= name %></p>
+                                                        <p id="username">@<%= username %></p>
+                                                </span>
+                                        </div>
+                                        <svg  id="twitter-logo" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 48 48" style=" fill:#000000;">
+                                                <path fill="#03A9F4" d="M42,12.429c-1.323,0.586-2.746,0.977-4.247,1.162c1.526-0.906,2.7-2.351,3.251-4.058c-1.428,0.837-3.01,1.452-4.693,1.776C34.967,9.884,33.05,9,30.926,9c-4.08,0-7.387,3.278-7.387,7.32c0,0.572,0.067,1.129,0.193,1.67c-6.138-0.308-11.582-3.226-15.224-7.654c-0.64,1.082-1,2.349-1,3.686c0,2.541,1.301,4.778,3.285,6.096c-1.211-0.037-2.351-0.374-3.349-0.914c0,0.022,0,0.055,0,0.086c0,3.551,2.547,6.508,5.923,7.181c-0.617,0.169-1.269,0.263-1.941,0.263c-0.477,0-0.942-0.054-1.392-0.135c0.94,2.902,3.667,5.023,6.898,5.086c-2.528,1.96-5.712,3.134-9.174,3.134c-0.598,0-1.183-0.034-1.761-0.104C9.268,36.786,13.152,38,17.321,38c13.585,0,21.017-11.156,21.017-20.834c0-0.317-0.01-0.633-0.025-0.945C39.763,15.197,41.013,13.905,42,12.429"></path>
+                                        </svg>
+                                </div>
+                                <div id="tweet-text"><%= tweetText %></div>
+                                <div id="third-row">
+                                        <span id="time"><%= time %></span> · <span id="date"><%= dateYear %></span> · <span id="version"><%= version %></span>
+                                </div>
+                        </div>
+                </div>
+		<p>you can customise it further by stretching the bottom right corner</p>
+		<input type="button" value="Download" id="download">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+                <script>
+var form = document.getElementById('tweetLink');
+
+document.getElementById('download').addEventListener("click",()=>{
+	var node = document.getElementById('card-wrapper');
+
+	domtoimage.toPng(node)
+	.then(function (dataUrl){
+		var link = document.createElement('a');
+		link.download = 'tweet.png';
+		link.href = dataUrl;
+		link.click();
+	})
+	.catch(function (error) {
+		console.error('oops, something went wrong!', error);
+	});
+})
+function changeText(id,text){
+	document.getElementById(id).innerText=text;
+}
+function changeColor(color){
+	document.getElementById('card-wrapper').style.backgroundColor=color;
+}
+function readURL(input) {
+	if (input.files && input.files[0]) {
+		var reader = new FileReader();
+
+		reader.onload = function (e) {
+			document.getElementById('profile').src=e.target.result;
+		};
+
+		reader.readAsDataURL(input.files[0]);
+	}
+}
+function readURLForBackground(input) {
+	if (input.files && input.files[0]) {
+		var reader = new FileReader();
+
+		reader.onload = function (e) {
+			document.getElementById('card-wrapper').style.backgroundImage=e.target.result;
+		};
+
+		reader.readAsDataURL(input.files[0]);
+		console.log("here")
+	}
+}
+function resize(dimensions) {
+	let cardWrapper = document.getElementById('card-wrapper');
+	let card = document.getElementById('card');
+
+	if(dimensions == "square"){
+		cardWrapper.style.width = "100px";
+		cardWrapper.style.height = "100px";
+		while(cardWrapper.clientWidth < card.clientWidth+16 || cardWrapper.clientHeight < card.clientHeight+16){
+			cardWrapper.style.width = `${cardWrapper.clientWidth+1}px`;
+			cardWrapper.style.height=cardWrapper.style.width;
+		}
+	}
+	if(dimensions == "landscape"){
+		cardWrapper.style.width = "100px";
+		cardWrapper.style.height = "100px";
+		while(cardWrapper.clientWidth < card.clientWidth+16 || cardWrapper.clientHeight < card.clientHeight+16){
+			cardWrapper.style.width = `${cardWrapper.clientWidth+1}px`;
+			cardWrapper.style.height=cardWrapper.style.width;
+		}
+		while(cardWrapper.clientWidth < 1.91*cardWrapper.clientHeight){
+			cardWrapper.style.width = `${cardWrapper.clientWidth+1}px`;
+		}
+	}
+	if(dimensions=="potrait"){
+		cardWrapper.style.width = "100px";
+		cardWrapper.style.height = "100px";
+		while(cardWrapper.clientWidth < card.clientWidth+16 || cardWrapper.clientHeight < card.clientHeight+16){
+			cardWrapper.style.width = `${cardWrapper.clientWidth+1}px`;
+			cardWrapper.style.height=cardWrapper.style.width;
+		}
+		while(5*cardWrapper.clientWidth > 4*cardWrapper.clientHeight){
+			cardWrapper.style.height = `${cardWrapper.clientHeight+1}px`;
+		}
+	}
+	
+}
+resize("square");
+		</script>
+        </body>
+</html>
