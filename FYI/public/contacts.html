@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+
+  </head>
+  <body>
+	<div>
+		<h1>See Recent FYI of your contacts</h1>
+		<div id="root"></div>
+	</div>
+	<script>
+		function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+var contactList = [];
+		fetch(`http://localhost:3000/getContactsFYI?uniqueId=${getCookie('uniqueId')}&contacts=${contactList}`).then(data=>{
+			data.text().then(data=>{
+				data = JSON.parse(data);
+				for(let i=0;i<data.length;i++){
+					if(data[i].status.length==0) continue;
+					
+					var div = document.createElement('div')
+					var p1 = document.createElement('p')
+					p1.innerHTML = `phone number: ${data[i].phoneNumber}`
+					var p2 = document.createElement('p')
+					p2.innerHTML = `status: ${data[i].status}`
+					div.appendChild(p1)
+					div.appendChild(p2)
+					document.getElementById('root').appendChild(div);
+				}
+			})
+		})
+	</script>
+  </body>
+</html>

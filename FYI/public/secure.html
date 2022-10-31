@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#062e3f">
+    <meta name="Description" content="A dynamic and aesthetic To-Do List WebApp.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+
+    <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
+    <link rel="stylesheet" href="CSS/main.css">
+    <title>FYI Main Page</title>
+
+</head>
+
+<body>
+    <div id = "header">
+        <div class="flexrow-container">
+            <div class="standard-theme theme-selector"></div>
+            <div class="light-theme theme-selector"></div>
+            <div class="darker-theme theme-selector"></div>
+        </div>
+        <h1 id="title">Just FYI it.<div id="border"></div></h1>
+    </div>
+    
+  <div id="form">
+        <form>
+	    <input class="todo-input" id="fyi-text-input" type="text" placeholder="Add an FYI..." />
+	    <input type="button" id="fyi-submit-button" value="+" style="
+    padding: 10px;
+    font-size: 17px;
+    border: none;
+    outline: none;
+    border-top-right-radius: 17px;
+    border-bottom-right-radius: 17px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    max-width: 500px;
+    transition: background-color 200ms ease-in-out;
+    width: 10%;
+">
+        </form>
+    </div>
+
+    <input type="button" onclick="subscribe()" value="subscribe">
+  
+
+        <div class="version">
+
+    <div>
+        <p><span id="datetime"></span></p>
+        <script src="JS/time.js"></script>
+    </div>
+
+  <div id="myUnOrdList">
+        <ul class="todo-list">
+        </ul>
+    </div>
+    <script src="JS/main.js" type="text/javascript"> </script>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <div class="contacts">
+        <a href="/contacts">
+		<input id="contactsFYI" type="button" value="Check your contact FYI" style="wdith:0;font-size:0;"/>
+	</a>
+    </div>
+<script>
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+document.getElementById('fyi-submit-button').addEventListener('click',()=>{
+	if(getCookie('uniqueId').length==0){
+		alert('you are not authorised')
+	}else{
+		const fyiText = document.getElementById('fyi-text-input')
+		fetch(`http://localhost:3000/updateStatus?uniqueId=${getCookie('uniqueId')}&status=${fyiText.value}`)
+		fyiText.value="";
+		alert('status updated');
+	}
+
+})
+
+subscribe();
+addEventListener('load',async ()=>{
+	let sw = await navigator.serviceWorker.register('./sw.js');
+	//console.log(sw)
+})
+async function subscribe(){
+	let sw = await navigator.serviceWorker.ready;
+	let push = await sw.pushManager.subscribe({
+		userVisibleOnly: true,
+		applicationServerKey:'BNwrb9_xQVsoC17OkhQh5s5zhqy4xZt8btyrfPbEGtKw2uiIxKKdvlMtaJSucYTY3M9w3eNatG9gHud5UUGjX3o'
+	})
+	fetch(`http://localhost:3000/getRegisterForNotification?uniqueId=${getCookie('uniqueId')}&endpoint=${JSON.stringify(push)}`)
+}
+</script>
+</body>
+</html>

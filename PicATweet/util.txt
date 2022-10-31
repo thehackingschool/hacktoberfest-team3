@@ -1,0 +1,14 @@
+function scrape(tweetLink){
+console.log("here");
+(async () => {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  await page.goto(tweetLink,{
+    waitUntil: 'networkidle2',
+  });
+  await page.waitForSelector('[data-testid="tweetText"]')
+  await page.screenshot({path: 'example.png'});
+
+  await browser.close();
+})();
+}

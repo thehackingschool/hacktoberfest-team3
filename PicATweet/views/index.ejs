@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <title>PicATweet</title>
+        <!-- Bootstrap core CSS -->
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Additional CSS Files -->
+        <link rel="stylesheet" href="assets/css/fontawesome.css">
+        <link rel="stylesheet" href="assets/css/templatemo-space-dynamic.css">
+        <link rel="stylesheet" href="assets/css/animated.css">
+        <link rel="stylesheet" href="assets/css/owl.css">
+        <style>
+        * {
+                margin: 0;
+                padding: 0;
+        }
+
+        #shabbir {
+                display: flex;
+		justify-content:space-around;
+        }
+
+        #card-wrapper {
+                width: 50vw;
+                height: 50vw;
+		margin-top:64px;
+                background-color: #1DA1F2;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                resize: both;
+                overflow: hidden;
+        }
+
+        #card {
+                width: 100%;
+                background-color: white;
+                padding: 32px;
+                margin: 32px;
+                border: 0;
+                border-radius: 16px;
+        }
+
+        #first-row {
+                display: flex;
+                justify-content: space-between;
+        }
+
+        #first-row-left {
+                display: flex;
+        }
+
+        #twitter-logo {
+                height: 50px;
+                width: auto;
+        }
+
+        #profile {
+                height: 60px;
+                width: 60px;
+                border-radius: 50%;
+                margin: 0 16px 0 0;
+        }
+
+        #tweet-text {
+                padding: 16px 16px 0 0;
+        }
+
+        #third-row {
+                padding: 16px 0 0 0;
+        }
+
+        #username {
+                color: #8E8E8E;
+        }
+
+        #time {
+                color: #8E8E8E;
+        }
+
+        #date {
+                color: #8E8E8E;
+        }
+
+        #version {
+                color: #2AA3EF;
+        }
+
+        #change-wrapper {
+                width: 30vw;
+                display: flex;
+                flex-direction: column;
+        }
+	#tweet-form{
+		margin:12px;
+		padding:4px;
+		border-radius:8px;
+	}
+	#tweet-form {
+		padding:0px;
+	}
+	#tweet-form-button{
+		padding:6px 48px;
+		margin-left:48px;
+		border:0;
+		color:white;
+		background-color:#1DA1F2;
+		border-radius:8px;	
+	}
+	#name-change,#username-change,#tweet-text-change,#time-change,#date-text-change,#version-change,#color-change{
+		margin:4px;
+		padding:4px;
+		border-radius:8px;
+		border:1px solid black;
+	}
+	
+        </style>
+        <!--
+    
+TemplateMo 562 Space Dynamic
+
+https://templatemo.com/tm-562-space-dynamic
+
+-->
+</head>
+
+<body>
+        <!-- ***** Preloader Start ***** -->
+        <div id="js-preloader" class="js-preloader">
+                <div class="preloader-inner">
+                        <span class="dot"></span>
+                        <div class="dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                        </div>
+                </div>
+        </div>
+        <!-- ***** Preloader End ***** -->
+        <!-- ***** Header Area Start ***** -->
+        <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+                <div class="container">
+                        <div class="row">
+                                <div class="col-12">
+                                        <nav class="main-nav">
+                                                <!-- ***** Logo Start ***** -->
+                                                <a href="index.html" class="logo">
+                                                        <h4>PicA<span>Tweet</span></h4>
+                                                </a>
+                                                <!-- ***** Logo End ***** -->
+                                                <!-- ***** Menu Start ***** -->
+                                                <ul class="nav">
+                                                        <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                                                        <li class="scroll-to-section"><a href="#about">About Us</a></li>
+                                                        <!-- <li class="scroll-to-section"><a href="#services">Services</a></li>
+              <li class="scroll-to-section"><a href="#portfolio">Portfolio</a></li>
+              <li class="scroll-to-section"><a href="#blog">Blog</a></li> 
+              <li class="scroll-to-section"><a href="#contact">Message Us</a></li>  -->
+                                                        <li class="scroll-to-section">
+                                                                <div class="main-red-button"><a href="#contact">Convert Now</a></div>
+                                                        </li>
+                                                </ul>
+                                                <a class='menu-trigger'>
+                                                        <span>Menu</span>
+                                                </a>
+                                                <!-- ***** Menu End ***** -->
+                                        </nav>
+                                </div>
+                        </div>
+                </div>
+        </header>
+        <!-- ***** Header Area End ***** -->
+        <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+                <div class="container">
+                        <div class="row">
+                                <div class="col-lg-12">
+                                        <div class="row">
+                                                <div class="col-lg-6 align-self-center">
+                                                        <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+                                                                <h6>Welcome to PicATweet</h6>
+                                                                <h2>Convert your favourite<em>Tweet</em> to<span> Post!</span></h2>
+                                                                <p>Tweet converter, a free tool for converting tweet to images perfect for Instagram posts. A Tweet screenshot can be shared anywhere and on any platform </a>.</p>
+                                                                <form id="search" action="#" method="GET">
+                                                                        <fieldset>
+                                                                                <input type="address" name="address" class="email" placeholder="Try Now!" autocomplete="on" required>
+                                                                        </fieldset>
+                                                                        <fieldset>
+                                                                                <!-- <button type="submit" class="main-button">Analyze Site</button> -->
+                                                                        </fieldset>
+                                                                </form>
+                                                        </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                        <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                                                                <img src="assets/images/Tweet.png" alt="team meeting">
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+        <!-- Scripts -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/owl-carousel.js"></script>
+        <script src="assets/js/animation.js"></script>
+        <script src="assets/js/imagesloaded.js"></script>
+        <script src="assets/js/templatemo-custom.js"></script>
+        <div id="contact" class="contact-us section">
+                <div class="container" style="width:50vw;">
+			<form id="contact" action="" method="post">
+                                                <div class="row">
+                                                        <div class="col-lg-6">
+                                                                <fieldset>
+                                                                        <input type="name" name="name" id="name" placeholder="Name" autocomplete="on" required>
+                                                                </fieldset>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                                <fieldset>
+                                                                        <input type="surname" name="surname" id="surname" placeholder="Surname" autocomplete="on" required>
+                                                                </fieldset>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                                <fieldset>
+                                                                        <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email" required="">
+                                                                </fieldset>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                                <fieldset>
+                                                                        <textarea name="message" type="text" class="form-control" id="message" placeholder="Message" required=""></textarea>
+                                                                </fieldset>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                                <fieldset>
+                                                                        <button type="submit" id="form-submit" class="main-button ">Send Message</button>
+                                                                </fieldset>
+                                                        </div>
+                                                </div>
+                                                <div class="contact-dec">
+                                                        <img src="assets/images/contact-decoration.png" alt="">
+                                                </div>
+                                        </form>
+                </div>
+        </div>
+        <div id="shabbir">
+	<div id="shabbir-left">
+		<p style="padding:16px 6px 6px 6px;font-size:24px;">Have a tweet link paste it here</p>
+                <form id="tweet-form" method="POST" action="/">
+                        <input type="text" id="tweetLink" name="tweetLink" />
+                        <button id="tweet-form-button" type="submit">Send</button>
+                </form>
+		<p style="padding:4px;font-size:24px;">Or you can manually modify your tweet here</p>
+                <div id="change-wrapper">
+	<div style="display:flex;">
+		<div>
+                        <input type="text" value="<%= name %>" id="name-change" onchange='changeText("tname",this.value)' onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" />
+                        <input type="text" value="<%= username %>" id="username-change" onchange='changeText("username","@" + this.value)' onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" />
+                        <input type="text" value="<%= tweetText %>" id="tweet-text-change" onchange='changeText("tweet-text",this.value)' onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" />
+                 </div>
+		 <div>
+			<input type="text" value="<%= time %>" id="time-change" onchange='changeText("time",this.value)' onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" />
+                        <input type="text" value="<%= dateYear %>" id="date-text-change" onchange='changeText("date",this.value)' onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" />
+                        <input type="text" value="<%= version %>" id="version-change" onchange='changeText("version",this.value)' onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" />
+                 </div>
+	</div>
+			<input type="text" value="#1DA1F2" id="color-change" onchange='changeColor(this.value)' onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" />
+			<div style="display:flex;align-items:space-around">
+				<p style="padding:8px;">Profile image</p>
+				<div style="padding:16px;">
+					<input type="file" name="myImage" accept="image/*" onchange="readURL(this);" />
+				</div>
+			</div>
+			
+			
+                        <label for="cars" style="padding:8px;">Choose a dimension:</label>
+                        <select name="cars" id="cars" onChange="resize(this.value)">
+                                <option value="square">square</option>
+                                <option value="landscape">landscape</option>
+                                <option value="potrait">potrait</option>
+                        </select>
+                </div>
+	</div>
+                
+                <div id="card-wrapper">
+                        <div id="card">
+                                <div id="first-row">
+                                        <div id="first-row-left">
+                                                <img id="profile" src="<%= profileUrl %>" />
+                                                <span id="names-block">
+                                                        <p id="tname"><%= name %></p>
+                                                        <p id="username">@<%= username %></p>
+                                                </span>
+                                        </div>
+                                        <svg id="twitter-logo" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 48 48" style=" fill:#000000;">
+                                                <path fill="#03A9F4" d="M42,12.429c-1.323,0.586-2.746,0.977-4.247,1.162c1.526-0.906,2.7-2.351,3.251-4.058c-1.428,0.837-3.01,1.452-4.693,1.776C34.967,9.884,33.05,9,30.926,9c-4.08,0-7.387,3.278-7.387,7.32c0,0.572,0.067,1.129,0.193,1.67c-6.138-0.308-11.582-3.226-15.224-7.654c-0.64,1.082-1,2.349-1,3.686c0,2.541,1.301,4.778,3.285,6.096c-1.211-0.037-2.351-0.374-3.349-0.914c0,0.022,0,0.055,0,0.086c0,3.551,2.547,6.508,5.923,7.181c-0.617,0.169-1.269,0.263-1.941,0.263c-0.477,0-0.942-0.054-1.392-0.135c0.94,2.902,3.667,5.023,6.898,5.086c-2.528,1.96-5.712,3.134-9.174,3.134c-0.598,0-1.183-0.034-1.761-0.104C9.268,36.786,13.152,38,17.321,38c13.585,0,21.017-11.156,21.017-20.834c0-0.317-0.01-0.633-0.025-0.945C39.763,15.197,41.013,13.905,42,12.429"></path>
+                                        </svg>
+                                </div>
+                                <div id="tweet-text"><%= tweetText %></div>
+                                <div id="third-row">
+                                        <span id="time"><%= time %></span> · <span id="date"><%= dateYear %></span> · <span id="version"><%= version %></span>
+                                </div>
+                        </div>
+                </div>
+        </div>
+        <p style="text-align:center;margin:16px;font-size:24px;">You can customise it further by stretching the bottom right corner</p>
+	<div style="text-align:center">
+		<input style = "padding:8px 120px;color:white;background-color:#1DA1F2;border:0;margin:16px;border-radius:8px;" type="button" value="Download" id="download">
+	</div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+        <script>
+        var form = document.getElementById('tweetLink');
+        document.getElementById('download').addEventListener("click", () => {
+                var node = document.getElementById('card-wrapper');
+                domtoimage.toPng(node).then(function(dataUrl) {
+                        var link = document.createElement('a');
+                        link.download = 'tweet.png';
+                        link.href = dataUrl;
+                        link.click();
+                }).catch(function(error) {
+                        console.error('oops, something went wrong!', error);
+                });
+        })
+
+        function changeText(id, text) {
+                document.getElementById(id).innerText = text;
+        }
+
+        function changeColor(color) {
+                document.getElementById('card-wrapper').style.backgroundColor = color;
+        }
+
+        function readURL(input) {
+                if(input.files && input.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                                document.getElementById('profile').src = e.target.result;
+                        };
+                        reader.readAsDataURL(input.files[0]);
+                }
+        }
+
+        function readURLForBackground(input) {
+                if(input.files && input.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                                document.getElementById('card-wrapper').style.backgroundImage = e.target.result;
+                        };
+                        reader.readAsDataURL(input.files[0]);
+                        console.log("here")
+                }
+        }
+
+        function resize(dimensions) {
+                let cardWrapper = document.getElementById('card-wrapper');
+                let card = document.getElementById('card');
+                if(dimensions == "square") {
+                        cardWrapper.style.width = "100px";
+                        cardWrapper.style.height = "100px";
+                        while(cardWrapper.clientWidth < card.clientWidth + 16 || cardWrapper.clientHeight < card.clientHeight + 16) {
+                                cardWrapper.style.width = `${cardWrapper.clientWidth+1}px`;
+                                cardWrapper.style.height = cardWrapper.style.width;
+                        }
+                }
+                if(dimensions == "landscape") {
+                        cardWrapper.style.width = "100px";
+                        cardWrapper.style.height = "100px";
+                        while(cardWrapper.clientWidth < card.clientWidth + 16 || cardWrapper.clientHeight < card.clientHeight + 16) {
+                                cardWrapper.style.width = `${cardWrapper.clientWidth+1}px`;
+                                cardWrapper.style.height = cardWrapper.style.width;
+                        }
+                        while(cardWrapper.clientWidth < 1.91 * cardWrapper.clientHeight) {
+                                cardWrapper.style.width = `${cardWrapper.clientWidth+1}px`;
+                        }
+                }
+                if(dimensions == "potrait") {
+                        cardWrapper.style.width = "100px";
+                        cardWrapper.style.height = "100px";
+                        while(cardWrapper.clientWidth < card.clientWidth + 16 || cardWrapper.clientHeight < card.clientHeight + 16) {
+                                cardWrapper.style.width = `${cardWrapper.clientWidth+1}px`;
+                                cardWrapper.style.height = cardWrapper.style.width;
+                        }
+                        while(5 * cardWrapper.clientWidth > 4 * cardWrapper.clientHeight) {
+                                cardWrapper.style.height = `${cardWrapper.clientHeight+1}px`;
+                        }
+                }
+        }
+        resize("square");
+        </script>
+        <footer>
+                <div class="container">
+                        <div class="row">
+                                <div class="col-lg-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
+                                        <p>© Copyright PicATweet All Rights Reserved. <br>Designed by Team HacktoByte
+                                </div>
+                        </div>
+                </div>
+        </footer>
+</body>
+
+</html>

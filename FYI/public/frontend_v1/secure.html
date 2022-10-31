@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+
+  </head>
+  <body>
+	<div>	
+		<h1>FYI</h1>
+		<input id="fyi-text-input" type="text" placeholder="FYI" />
+		<input id="fyi-submit-button" type="button" value="+" />
+		<a href="/contacts">
+			<input id="contactsFYI" type="button" value="Check your contact FYI"/>
+		</a>
+
+	</div>
+	<script>
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+document.getElementById('fyi-submit-button').addEventListener('click',()=>{
+	if(getCookie('uniqueId').length==0){
+		alert('you are not authorised')
+	}else{
+		const fyiText = document.getElementById('fyi-text-input')
+		fetch(`http://localhost:3000/updateStatus?uniqueId=${getCookie('uniqueId')}&status=${fyiText.value}`)
+		fyiText.value="";
+		alert('status updated');
+	}
+
+})
+
+subscribe();
+addEventListener('load',async ()=>{
+	let sw = await navigator.serviceWorker.register('./sw.js');
+	//console.log(sw)
+})
+async function subscribe(){
+	let sw = await navigator.serviceWorker.ready;
+	let push = await sw.pushManager.subscribe({
+		userVisibleOnly: true,
+		applicationServerKey:'BNwrb9_xQVsoC17OkhQh5s5zhqy4xZt8btyrfPbEGtKw2uiIxKKdvlMtaJSucYTY3M9w3eNatG9gHud5UUGjX3o'
+	})
+	fetch(`http://localhost:3000/getRegisterForNotification?uniqueId=${getCookie('uniqueId')}&endpoint=${JSON.stringify(push)}`)
+}
+	</script>
+  </body>
+</html>
