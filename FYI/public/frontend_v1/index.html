@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+		
+	
+	<form action="/" method="POST">
+		<input type="text" name="phoneNumber" id="phone-number"  placeholder="phone Number"/>
+		<input type="button" value="getotp"  id="phone-number-button" onclick="phone()"/>
+		<input type="text" id="otp-number" name="otp" placeholder="OTP Number"/>
+		<input type="submit" value="submit" id="otp-number-button"/>
+	</form>
+	<a href="/secure">
+		<input type="button" value="Already register click here"/>
+	</a>
+	<script>
+	var phoneNumber = document.getElementById("phone-number");
+	var phoneNumberButton = document.getElementById("phone-number-button");
+	var otpNumber = document.getElementById("otp-number");
+	var otpNumberButton = document.getElementById("otp-number-button");
+	var toSend={};
+function phone(){
+	toSend.phone = phoneNumber.value;
+	fetch(`/otp?phoneNumber=${phoneNumber.value}`)	
+}
+	</script>
+  </body>
+</html>

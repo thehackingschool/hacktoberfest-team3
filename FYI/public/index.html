@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login Form</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="logo">
+		<!-- <img src="Logo_FYI_Rectangle.png" alt="logo" width="250" height="125"> -->
+	</div>
+	<br/><br/>
+	<div class="box">
+		<form autocomplete="off" action="/" method="POST">
+			<h2>Sign In</h2>
+			<div class="inputBox">
+				<input type="text" required="required" name="phoneNumber" id="phone-number"/>
+				<span>Phone Number</span>
+				<i></i>
+				</div>
+				<br/>
+				<div class="links2">
+					<input name="submit3" type="button" value="Get OTP"  id="phone-number-button" onclick="phone()"/>
+				</div>
+				<br/><br/>
+			<div class="inputBox">
+				<input type="text" id="otp-number" name="otp" placeholder="OTP Number"/>
+				<span>OTP</span>
+				<i></i>
+			</div>
+			<br/>
+			<div class="links">
+				<input name="submit1" type="submit" value="Sign In" id="otp-number-button"/>
+				<a href="/secure">
+					<input name="submit2" type="button" value="FYI User"/>
+				</a>
+			</div>
+		</form>
+	</div>
+	<script>
+	var phoneNumber = document.getElementById("phone-number");
+	var phoneNumberButton = document.getElementById("phone-number-button");
+	var otpNumber = document.getElementById("otp-number");
+	var otpNumberButton = document.getElementById("otp-number-button");
+	var toSend={};
+function phone(){
+	toSend.phone = phoneNumber.value;
+	fetch(`/otp?phoneNumber=${phoneNumber.value}`)	
+}
+	</script>
+</body>
+</html>
